@@ -1,3 +1,6 @@
 venv/
 images/
 logo.png
+
+dist/
+assm/__pycache__
