@@ -7,7 +7,7 @@ module = "assm"
 author = "Alexander Popov"
 author-email = "iiiypuk@iiiypuk.me"
 home-page = "https://github.com/emilecok/assm"
-requires = ["Pillow==8.3.1" ]
+requires = [ "Pillow==8.3.1" ]
 description-file = "README.md"
 classifiers = [
     "License :: OSI Approved :: MIT License",
