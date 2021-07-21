@@ -1,5 +1,6 @@
 """iOS splash screen generator"""
 
+import sys
 import os
 from PIL import Image
 from assm.devices import APPLE_DEVICES
@@ -19,14 +20,14 @@ def make_splash_image(screen_orientation, screen_width, screen_height, logo_path
     splash_image = Image.new('RGB', (screen_width, screen_height), (255, 255, 255))
     logo_image = Image.open(logo_path)
     app_logo = logo_image.resize((logo_size, logo_size))
-    
+
     try:
         splash_image.paste(app_logo, (logo_w_pos, logo_h_pos), app_logo)
     except ValueError as e:
         if str(e) == 'bad transparency mask':
             print('ERROR: Bad transparency mask.')
 
-        quit(-1)
+        sys.exit(-1)
 
     return splash_image
 
@@ -51,9 +52,9 @@ def main(output_folder='./images/'):
 
         try:
             splash = make_splash_image('portrait', device_w, device_h, 'logo.png')
-        except FileNotFoundError as e:
+        except FileNotFoundError:
             print('ERROR: File logo.png not found.')
-            quit(1)
+            sys.exit(1)
         splash.save(file_name)
 
         print('...splash for {w}x{h} saved...'.format(w=device_w, h=device_h))

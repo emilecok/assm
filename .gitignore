@@ -1,4 +1,5 @@
 venv/
+.tox/
 dist/
 assm/__pycache__
 images/
